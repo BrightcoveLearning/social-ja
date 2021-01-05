@@ -1,0 +1,612 @@
+﻿<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  
+  <title>自動同期を使用して動画をソーシャルメディアアカウントと同期させる</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">  
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-ultra.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-super.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-black.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-bold.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.eot" type="font/eot">
+  <link data-react-helmet="true" rel="preload" as="font" href="https://files.brightcove.com/fonts/balto/baltoweb-medium.woff" type="font/woff">
+  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
+  <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
+  <link rel="stylesheet" href="/assets/css/local.css">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  <script src="/assets/js/sajari-head.js"></script>
+</head>
+
+<body class="body">
+
+<header>
+  <div class="div-header">
+    <a href="/"><span class="product-logo" style="font-family:'Balto Web','Public Sans';font-size:2em;font-weight:bold;">BRIGHTCOVE SOCIAL<sup>™</sup></span></a>
+<!-- GTranslate: https://gtranslate.io/ -->
+<select onchange="doGTranslate(this);"><option value="">言語の選択</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+
+<script>
+/* <![CDATA[ */
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
+/* ]]> */
+</script>
+
+    <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
+      <option value="">ブライトコーブのその他のドキュメント</option>
+      
+        
+          <option value="https://support.brightcove.com">ドキュメントホーム</option>
+        
+      
+        
+          <option value="https://audience.support.brightcove.com">Brightcove Audience</option>
+        
+      
+        
+          <option value="https://beacon.support.brightcove.com">ブライトコーブビーコン</option>
+        
+      
+        
+          <option value="https://campaign.support.brightcove.com">ブライトコーブキャンペーン</option>
+        
+      
+        
+          <option value="https://engage.support.brightcove.com">Brightcove Engage</option>
+        
+      
+        
+          <option value="https://live.support.brightcove.com">Brightcove Live</option>
+        
+      
+        
+          <option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
+        
+      
+        
+          <option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
+        
+      
+        
+          <option value="https://social.support.brightcove.com">ブライトコーブソーシャル</option>
+        
+      
+        
+          <option value="https://studio.support.brightcove.com">Video Cloud Studio</option>
+        
+      
+        
+          <option value="https://player.support.brightcove.com">ブライトコーブのプレーヤー開発</option>
+        
+      
+        
+          <option value="https://apis.support.brightcove.com">Video CloudプラットフォームAPI</option>
+        
+      
+        
+          <option value="https://sdks.support.brightcove.com">ビデオクラウドデバイス SDK</option>
+        
+      
+        
+          <option value="https://integrations.support.brightcove.com">統合および CMS コネクタ</option>
+        
+      
+        
+          <option value="https://general.support.brightcove.com">ビデオクラウドの一般情報</option>
+        
+      
+        
+          <option value="https://zencoder.support.brightcove.com">Zencoder</option>
+        
+      
+    </select>
+
+
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="サポート"/> サポートへのお問い合わせ</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="システムステータス"/> システムステータス</a></span> <br/>
+    
+  </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb arr-right">
+      
+      <li class="breadcrumb-item"><a href="/">ホーム</a></li>
+      
+      
+      
+      <li class="breadcrumb-item"><a href="/general/">一般情報</a></li>
+      
+      <li class="breadcrumb-item active" aria-current="page">自動同期を使用して動画をソーシャルメディアアカウントと同期させる</li>
+    </ol>
+  </nav>
+</header>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-3 left-side-bar">
+        <nav class="sidenav" id="side_nav">
+          
+            
+            <h5><a href="/index.html">ホーム</a></h5>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/get-started/index.html">はじめに<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/get-started/getting-started-brightcove-social.html">オーディエンスのはじめに</a></li>
+                  
+                
+                  
+                    <li><a href="/get-started/social-training-videos.html">ソーシャル・トレーニング・ビデオ</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/general/index.html">一般情報<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/general/creating-social-media-publishing-destinations.html">公開先の作成</a></li>
+                  
+                
+                  
+                    <li><a href="/general/creating-video-clip-using-brightcove-social.html">ビデオクリップの作成</a></li>
+                  
+                
+                  
+                    <li><a href="/general/publishing-videos-social-media-platforms.html">ソーシャルメディアへのビデオの公開</a></li>
+                  
+                
+                  
+                    <li><a href="/general/setting-privacy-status-video.html">動画のプライバシーステータスの設定</a></li>
+                  
+                
+                  
+                    <li><a href="/general/using-auto-sync-synchronize-videos-social-media-accounts.html">自動同期を使用する</a></li>
+                  
+                
+                  
+                    <li><a href="/general/viewing-videos-published-social-media.html">ソーシャルメディアに公開されたビデオの表示</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/analytics/index.html">アナリティクスの確認<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/analytics/reviewing-social-analytics.html">ソーシャルアナリティクスの確認</a></li>
+                  
+                
+                  
+                    <li><a href="/analytics/reviewing-social-engagement-analytics.html">ソーシャルエンゲージメント分析の確認</a></li>
+                  
+                
+                  
+                    <li><a href="/analytics/reviewing-social-views-analytics.html">ソーシャルビュー分析の確認</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/develop/index.html">開発者<strong> + </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/develop/overview-social-api.html">概要:ソーシャル API </a></li>
+                  
+                
+                  
+                    <li><a href="/develop/quick-start-social-api.html">「クイックスタート:ソーシャル API </a></li>
+                  
+                
+                  
+                    <li><a href="/develop/reference.html">ソーシャル API リファレンス</a></li>
+                  
+                
+                  
+                    <li><a href="/develop/social-api-error-reference.html">ソーシャル API:エラーリファレンス</a></li>
+                  
+                
+              </ul>
+            
+          
+            
+              <h5 class="submenu-header"><a href="/support/index.html"><strong>サポート+ </strong></a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                
+                  
+                    <li><a href="/support/brightcove-answer.html">ブライトコーブの回答</a></li>
+                  
+                
+                  
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">ブライトコーブのシステムステータスページの表示</a></li>
+                  
+                
+                  
+                    <li><a href="/support/contact-sales.html">営業へのお問い合わせ</a></li>
+                  
+                
+                  
+                    <li><a href="/support/opening-case-with-brightcove-support.html">サポートケースを開く</a></li>
+                  
+                
+              </ul>
+            
+          
+      </nav>
+    </div>
+    <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
+  <!-- bootstrap layout -->
+
+<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="ナビゲーションメニュー"/></p>
+
+<!-- search bar -->
+<div id="nav-search-box" style="margin-top: 1rem;"></div>
+<!-- in-page navigation for narrow screens -->
+<details class="centered-inpage-nav" id="centered_inpage_nav">
+  <summary><h6 class="toc">ページコンテンツ</h6></summary>
+  <nav id="centered_toc"></nav>
+  <ul id="centered_in_page_toc" class="list-none"></ul>
+</details>
+<!-- open in new tab/window -->
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="新しいタブで開く" style="margin-top:4em;width: 1.5em;"/></a>
+
+
+
+  
+    
+
+
+<article class="bcls-article">
+  <h1>自動同期を使用して動画をソーシャルメディアアカウントと同期させる</h1>
+  <summary>このトピックでは、Brightcove Social の自動同期機能を使用して、動画をソーシャルメディアチャンネルに自動的に同期する方法について説明します。</summary>
+  <section class="bcls-section">
+    <div class="training-video-player-ipx" data-experience="5a73630f7afd7a00101bc1b5" data-video-ids="5194128705001">&nbsp;</div>
+    <script src="https://players.brightcove.net/20318290001/experience_5a73630f7afd7a00101bc1b5/live.js"></script>
+    <p>Brightcove Social には自動同期機能があり、動画に関連付けられたタグに基づいて、動画をソーシャルメディアチャンネルに自動的に同期できます。</p>
+    <p>自動同期を設定する前に、公開先を作成しておく必要があります。公開先の作成については、<a href="/general/creating-social-media-publishing-destinations.html">「ソーシャルメディア公開先を作成する」</a>を参照してください。</p>
+    <p>自動同期を使用し、Social モジュールを使用して手動でビデオを公開することは独立した操作であることに注意してください。自動同期は、Social モジュールを使用して手動で公開されたビデオを認識しません。動画がタグ付けされ、Auto Sync がソーシャル配信先の 1 つに公開される場合、その動画が Social モジュールを使用して手動で公開されているかどうかに関係なく、その動画は配信されます。</p>
+  </section>
+  <section class="bcls-section">
+    <h2 id="configure">自動同期の設定</h2>
+    <p>自動同期を設定するには、次の手順に従います。</p>
+    <p>タグを入力すると、これらのタグが付いた動画の数が表示されます。</p>
+    <aside class="bcls-aside bcls-aside--information">注：指定されたタグを持つ既存の動画は自動的に同期されません。これらのタグが付いた新しい動画は自動的に同期されます。既存のビデオを同期するには、ビデオのメタデータを変更して自動同期をトリガーします。</aside>
+    <ol class="bcls-tasklist-restart">
+      <li>ブライトコーブソーシャルを開きます。</li>
+      <li>左側のナビゲーションで [ <strong>自動同期</strong> ] をクリックします。作成されたすべての自動同期名のリストが表示されます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-autosync-list.png"/></figure>
+        <aside class="bcls-aside bcls-aside--information">注：動画が同期されると、サムネイル画像が表示されます。</aside>
+      </li>
+      <li>[ <strong>自動同期の設定</strong> ] をクリックします。</li>
+      <li><strong>同期の名前を入力します</strong>。</li>
+      <li>配信する動画を選択します。
+        <ul>
+          <li><strong>これらすべてのタグを持つ動画</strong> - <strong>リストされたすべてのタグを含む動画は同期する必要があります</strong></li>
+          <li><strong>これらのタグのいずれかを含む動画</strong> - <strong>リストされているタグのいずれかを含む動画は同期する必要があります</strong></li>
+          <li><strong>このアカウント内のすべての動画</strong> -アカウント内のすべてのビデオを同期する必要があります</li>
+        </ul>
+      </li>
+      <li>[ <strong>このアカウント内のすべての動画</strong> ] が選択されていない限り、タグのコンマ区切りのリストを入力します。</li>
+      <li>除外する動画を選択します。
+        <ul>
+          <li><strong>非アクティブ</strong> -非アクティブな動画は同期されません（デフォルト）</li>
+          <li><strong>スケジュール制限</strong> -スケジュールされた動画は同期されません</li>
+          <li><strong>地理的に制限</strong> -地理的制限のある動画は同期されません</li>
+        </ul>
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-setup.png"/></figure>
+      </li>
+      <li>[<strong>Next</strong>]をクリックします。</li>
+      <li>ビデオを同期する公開先を選択します。[ <strong>宛先の管理</strong> ] をクリックして、新しい宛先を作成するか、既存の宛先を編集します。宛先をクリックすると、デフォルトの宛先が表示されます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-choose-dest.png"/></figure>
+        <aside class="bcls-aside bcls-aside--information">注：宛先のデフォルトは、宛先のプロパティを編集することで変更できます。</aside>
+      </li>
+      <li>[<strong>Next</strong>]をクリックします。</li>
+      <li><a href="#rules">自動同期ルールを設定します</a>。利用可能なオプションは、選択したソーシャルプラットフォームに応じて変更されます。</li>
+    </ol>
+  </section>
+  <section class="bcls-section">
+    <h2 id="rules">自動同期ルールの設定</h2>
+    <p>自動同期を設定する場合、ソーシャルメディアサイトの動画に何が起こるかを処理するようにルールを設定できます。これには、ビデオがリストから削除されたとき（ビデオが Video Cloud から削除されるか、タグが変更された場合）やビデオメタデータの更新の処理方法が含まれます。ルールは、選択されたソーシャルメディアプラットフォームに基づいています。</p>
+    <ul>
+      <li><a href="#yt">ユーチューブ</a></li>
+      <li><a href="#fb">フェイスブック</a></li>
+      <li><a href="#twitter">ツイッター</a></li>
+    </ul>
+    <aside class="bcls-aside bcls-aside--information">注
+      <ul>
+        <li>Auto Sync を使用して動画がソーシャルプラットフォームに公開されると、ブライトコーブ Social はソーシャルメディア側でその動画に対して発生したアクションを追跡しません。たとえば、ソーシャルプラットフォームから動画が削除されてもBrightcove Social に通知されず、動画が削除されたという事実は Brightcove Social 内に反映されません。これは、ソーシャルメディアプラットフォームが著作権で保護されたコンテンツを検出し、それを削除した場合にも発生する可能性があります。それ以降に Video Cloud 側で動画を変更して別の同期イベントが発生すると、Brightcove Social で同期エラーが発生します。この場合、「再試行可能なエラー」であり、再試行すると、変更が適用された状態で動画が再アップロードされます。</li>
+        <li>自動同期が可能な初期制限は20個です。さらに必要な場合は、<a href="https://supportportal.brightcove.com/s/login/?language=en_US">ブライトコーブサポートにお問い合わせください</a>。</li>
+      </ul>
+    </aside>
+    <div id="yt" class="BCL-subsection">
+      <h3>YouTube ルールの設定</h3>
+      <p>YouTube で自動同期を使用する場合:</p>
+      <ul>
+        <li>YouTube にはタイトルが 100 文字に制限されているため、Social モジュールは動画のタイトルを 100 文字に切り捨てます。</li>
+        <li><strong>[ YouTube で動画のメタデータを更新] オプションが選択されている場合</strong>、動画がキャプションなしでアップロードされ、キャプションが追加されると、キャプションが YouTube に渡されます。</li>
+        <li><strong>[ YouTube で動画のメタデータを更新] オプションが選択されている場合に</strong>、動画がキャプション付きでアップロードされている場合、Video Cloud でキャプション情報を変更すると、更新されたキャプションが YouTube に渡されます。</li>
+      </ul>
+      <ol class="bcls-tasklist-restart">
+        <li>動画にタグが付いていないか、Video Cloud から削除されたときの動作を選択します。
+          <ul>
+            <li><strong>YouTubeで配信された動画を削除する</strong> -動画はYouTubeから削除されます</li>
+            <li><strong>配信動画を作成</strong> -YouTube <strong>動画を非公開にするか</strong>、<strong>非公開にする</strong></li>
+            <li><strong>アクションなし</strong> -YouTubeのビデオには何も起こりません</li>
+          </ul>
+        </li>
+        <li>動画のメタデータが変更されたときの動作を選択します。
+          <ul>
+            <li><strong>YouTube で動画メタデータを更新する</strong> -動画クラウド側の動画メタデータへの変更は YouTube に同期されます。</li>
+            <li><strong>アクションなし</strong> -アクションは実行されません
+              <aside class="bcls-aside bcls-aside--information">注：Studio でビデオソースファイルを更新すると、更新されたビデオは YouTube に同期されません。これは<a href="https://support.google.com/youtube/answer/55770?hl=en"> YouTube の制限です</a>。</aside>
+            </li>
+          </ul>
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-yt-rules.png"/></figure>
+        </li>
+        <li>[<strong>Next</strong>]をクリックします。</li>
+        <li>自動同期の設定を確認し、[ <strong>完了</strong> ] をクリックします。
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-yt-confirm.png"/></figure>
+        </li>
+      </ol>
+    </div>
+    <div id="fb" class="BCL-subsection">
+      <h3>Facebook ルールの設定</h3>
+      <ol class="bcls-tasklist-restart">
+        <li>動画にタグが付いていないか、Video Cloud から削除されたときの動作を選択します。
+          <ul>
+            <li><strong>Facebookで配信された動画を削除する</strong> -動画はFacebookから削除されます</li>
+            <li><strong>Facebookで配信された動画の有効期限切れ-Facebookで動画の有効期限が切れます</strong></li>
+            <li><strong>アクションなし</strong> -Facebookのビデオには何も起こらない</li>
+          </ul>
+        </li>
+        <li>動画のメタデータが変更されたときの動作を選択します。
+          <ul>
+            <li><strong>Facebook で動画メタデータを更新する</strong> -ビデオクラウド側の動画メタデータへの変更は Facebook に同期されます。</li>
+            <li><strong>アクションなし</strong> -アクションは実行されません</li>
+          </ul>
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-fb-rules.png"/></figure>
+        </li>
+        <li>[<strong>Next</strong>]をクリックします。</li>
+        <li>自動同期の設定を確認し、[ <strong>完了</strong> ] をクリックします。
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-fb-confirm.png"/></figure>
+        </li>
+      </ol>
+    </div>
+    <div id="twitter" class="BCL-subsection">
+      <h3>Twitterルールの設定</h3>
+      <ol class="bcls-tasklist-restart">
+        <li>動画にタグが付いていないか、Video Cloud から削除されたときの動作を選択します。
+          <ul>
+            <li><strong>Twitterで配信された動画を削除する</strong> -動画はTwitterから削除されます</li>
+            <li><strong>アクションなし</strong> -Twitterの動画には何も起こらない</li>
+          </ul>
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-twitter-rules.png"/></figure>
+        </li>
+        <li>[<strong>Next</strong>]をクリックします。</li>
+        <li>自動同期の設定を確認し、[ <strong>完了</strong> ] をクリックします。
+          <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-twitter-confirm.png"/></figure>
+        </li>
+      </ol>
+    </div>
+  </section>
+  <section class="bcls-section">
+    <h2 id="view">自動同期ジョブの表示と編集</h2>
+    <p>作成された Auto Sync ジョブを表示および編集するには、次の手順を実行します。</p>
+    <ol class="bcls-tasklist-restart">
+      <li>ブライトコーブソーシャルを開きます。</li>
+      <li>左側のナビゲーションで [ <strong>自動同期</strong> ] をクリックします。作成されたすべての自動同期ジョブのリストが表示されます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-autosync-list.png"/></figure>
+        <ul>
+          <li>[ <strong>タグ</strong> ] 列のリンクをクリックして Media モジュールを開き、それらのタグに基づいて検索します。</li>
+          <li>[ <strong>宛先</strong> ] 列をクリックして、パブリッシュ先の設定を開きます。</li>
+          <li><strong>同期ジョブを削除するには</strong>、[Delete] をクリックします。</li>
+        </ul>
+      </li>
+      <li>[ <strong>自動同期名 &amp; ID] 列の名前のリンクをクリックして</strong>、同期のプロパティを開きます。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-autosync-properties.png"/></figure>
+      </li>
+      <li><strong>STATUS </strong>は以下のように設定できます。
+        <ul>
+          <li><strong>アクティブ</strong> -動画が同期されます</li>
+          <li><strong>一時停止</strong> -動画は同期されません</li>
+        </ul>
+      </li>
+      <li><strong>SHOW </strong>リストを使用すると、表示される内容をフィルタリングできます。</li>
+      <li>[ <strong>設定</strong> ] をクリックして [同期設定] を編集します。[ <strong>更新</strong> ] をクリックして、変更を保存します。
+        <figure class="bcls-figure"><img class="bcls-image--no-border" alt="" src="/assets/images/general/node16642-edit-sync-properties.png"/></figure>
+      </li>
+      <li><strong>同期ジョブを削除するには</strong>、[Delete] をクリックします。</li>
+    </ol>
+  </section>
+</article>
+
+<!-- complete bootstrap layout -->
+    </div>
+    <div class="col-sm-2 right-side-bar">
+      
+      <nav class="right-side-nav" id="right_side_nav">
+        <h6 class="toc">ページコンテンツ</h6>
+        <ul id="in_page_nav" class="list-none"></ul>
+      </nav>
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="last-updated">
+  ページ最終更新日 2020 年 9 月 29 日
+</div>
+
+
+
+<footer class="bcls-footer" role="contentinfo">
+  <div class="row">
+    <div class="region region-footer-top-center col-md-12">
+      <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+
+        <h2>ブライトコーブサポート</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://status.brightcove.com">システムステータス</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">サポートへのお問い合わせ</a>
+          </li>
+          <li>
+            <a href="https://support.brightcove.com/">ドキュメンテーション</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
+
+        <h2>トレーニング</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">オンラインコース</a>
+          </li>
+          <li>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">コースに登録する</a>
+          </li>
+          <li>
+            <a href="https://university.brightcove.com/">Brightcove University</a>
+          </li>
+        </ul>
+
+      </nav>
+      <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
+
+        <h2>Brightcove</h2>
+
+        <ul class="menu">
+          <li>
+            <a href="https://www.brightcove.com">Brightcove.com</a>
+          </li>
+          <li>
+            <a href="https://supportportal.brightcove.com/s/login/?">お問合せ</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="region region-footer-bottom-center col-md-12">
+      <div class="bcls-copyright footer-menu">
+        <table>
+          <tr>
+            <td>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. All rights reserved.</div>
+            </td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">プライバシー</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">利用規約</a></td>
+            <td>
+              <div class="gf-links-cols footer-menu">
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</footer>
+<div id="talla_wrapper">
+  <p style="text-align: right;position: relative;"><button style="background:rgb(2, 28, 146);color:Snow;padding:.3rem;position:fixed;right:0;bottom:1em;z-index:9999999" onclick="javascript:displayChat()">質問ですか? </button> </p>
+  <div id="talla_chat">
+</div>
+</div>
+<script>
+      
+  var searchBox = sajari.init({
+    mode: "search-box",
+    project: "1588255093746585379", // Set this to your project.
+    collection: "brightcove-documenation", // Set this to your collection.
+    instantPipeline: "autocomplete", // Pipeline used as you type
+    inputPlaceholder: "Search", // Input element placeholder
+    maxSuggestions: 5, // Maximum number of suggestions to show
+    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
+  });
+  
+    searchBox("sub", "pipeline.search-sent", function (_, query) {
+      window.location = "/search.html?q=" + encodeURIComponent(query.q);
+    });
+  
+
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/setDate.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/prism.js"></script>
+  
+  <script src="https://support.brightcove.com/site-assets/js/site/site.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/tabs.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/toc.js"></script>
+  <script src="/assets/js/sites_nav.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/bcls-utils.js"></script>
+  <script src="https://support.brightcove.com/site-assets/js/site/local-link-fix.js"></script>
+  <script src="/assets/js/feedback.js"></script>
+  
+  <script src="/assets/js/sajari-search-foot.js"></script>
+  
+  <!-- <script src="/assets/js/sajari-index.js"></script> -->
+  <script src="https://assets.talla.com/latest/embeddedjs/talla.js"></script>
+  <script src="/assets/js/talla-init.js"></script>
+  <style>
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
+      background-color: lightblue;
+    }
+    div.sj-tabs__tab {
+      margin-top: 3rem;
+      margin-left: .3rem;
+      border-top-left-radius: .4rem;
+      border-top-right-radius: .4rem;
+      background-color:#e8e8e8;
+    }
+
+    div.sj-tabs__tab.sj-tabs__tab--selected {
+      border-bottom-color: crimson;
+      background-color: #f8f8f8;
+    }
+
+    p.sj-results__result__description.css-p9jvyt {
+      font-size: 1rem;
+    }
+
+    .sj-result__text.css-31l7gp h3 {
+      color: navy;
+      font-size: 1.4rem;
+    }
+    </style>
+
+</body>
+
+</html>

@@ -1,1 +1,1 @@
-# social-ja
+# jekyll-template
