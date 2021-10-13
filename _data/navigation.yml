@@ -1,0 +1,63 @@
+- section:
+  name: ホーム
+  url: /index.html
+- section:
+  name: 入門編
+  url: /get-started/index.html
+  icon: '<img class="bcls-icon" src="/assets/images/feather/play.svg">'
+  docs:
+    - name: ソーシャル入門
+      url: /get-started/getting-started-brightcove-social.html
+    - name: ソーシャル・トレーニング・ビデオ
+      url: /get-started/social-training-videos.html
+- section:
+  name: 一般情報
+  icon: '<i data-feather="info"></i>'
+  url: /general/index.html
+  docs:
+    - name: 公開先の作成
+      url: /general/creating-social-media-publishing-destinations.html
+    - name: ビデオクリップの作成
+      url: /general/creating-video-clip-using-brightcove-social.html
+    - name: ソーシャルメディアへのビデオの公開
+      url: /general/publishing-videos-social-media-platforms.html
+    - name: 動画のプライバシーステータスの設定
+      url: /general/setting-privacy-status-video.html
+    - name: 自動同期の使用
+      url: /general/using-auto-sync-synchronize-videos-social-media-accounts.html
+    - name: ソーシャルメディアに公開されたビデオの表示
+      url: /general/viewing-videos-published-social-media.html
+- section:
+  name: アナリティクスの確認
+  url: /analytics/index.html
+  docs:
+    - name: ソーシャルアナリティクスの確認
+      url: /analytics/reviewing-social-analytics.html
+    - name: ソーシャルエンゲージメント分析の確認
+      url: /analytics/reviewing-social-engagement-analytics.html
+    - name: ソーシャルビュー分析の確認
+      url: /analytics/reviewing-social-views-analytics.html
+- section:
+  name: 開発者
+  url: /develop/index.html
+  docs:
+    - name: '概要:ソーシャル API'
+      url: /develop/overview-social-api.html
+    - name: '「クイックスタート:ソーシャル API'
+      url: /develop/quick-start-social-api.html
+    - name: 'ソーシャル API リファレンス'
+      url: /develop/reference.html
+    - name: 'ソーシャル API:エラーリファレンス'
+      url: /develop/social-api-error-reference.html
+- section:
+  name: サポート
+  url: /support/index.html
+  docs:
+    - name: 'Brightcoveのシステムステータスページの表示'
+      url: '/support/viewing-brightcove-system-status-page.html'
+    - name: '営業へのお問い合わせ'
+      url: '/support/contact-sales.html'
+    - name: 'サポートケースを開く'
+      url: '/support/opening-case-with-brightcove-support.html'
+    - name: 'サポートポータルのパスワードをリセットする'
+      url: '/support/reset-support-portal-password.html'
